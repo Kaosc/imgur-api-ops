@@ -160,30 +160,35 @@ async function addImagesToAlbum(albumId, imageIds) {
 	}
 }
 
-;(async () => {
+; (async () => {
+	return
+
 	try {
 		/**
 		 * CREATE ALBUM
 		 */
 		// const albumId = await createAlbum()
+
 		/**
 		 * GET ALBUM BY TITLE
 		 */
-		// const albumId = await getAlbumIDbyTitle("Cats")
+		const albumId = await getAlbumIDbyTitle("Cats")
+
 		/**
 		 * GET ALL NON-ALBUM IMAGES
 		 */
-		// const allImages = await getAllImages()
-		// const albumImageIds = await getAllAlbumImages()
-		// const nonAlbumImages = filterNonAlbumImages(allImages, albumImageIds)
+		const allImages = await getAllImages()
+		const albumImageIds = await getAllAlbumImages()
+		const nonAlbumImages = filterNonAlbumImages(allImages, albumImageIds)
+
 		/**
 		 * ADD NON-ALBUM IMAGES TO THE SPECIFIED ALBUM
 		 */
-		// if (nonAlbumImages.length > 0) {
-		// 	await addImagesToAlbum(albumId, nonAlbumImages)
-		// } else {
-		// 	console.log("No non-album images found to add to the album.")
-		// }
+		if (nonAlbumImages.length > 0) {
+			await addImagesToAlbum(albumId, nonAlbumImages)
+		} else {
+			console.log("No non-album images found to add to the album.")
+		}
 	} catch (e) {
 		console.error("Error:", e)
 	}
